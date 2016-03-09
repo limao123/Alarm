@@ -10,7 +10,7 @@
 
 @interface AlarmClockEntity : NSObject<NSCoding>
 @property (unsafe_unretained, nonatomic) NSInteger num;
-@property (copy, nonatomic) NSString *time; //格式hh:MM
+@property (copy, nonatomic) NSDate *fireDate ; //格式hh:MM
 @property (copy, nonatomic) NSArray *repeatDaysInWeek;
 @property (copy, nonatomic) NSString *tagMessage;
 @property (copy, nonatomic) NSString *soundPath;

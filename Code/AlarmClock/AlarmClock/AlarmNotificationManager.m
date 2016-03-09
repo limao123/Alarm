@@ -7,37 +7,59 @@
 //
 
 #import "AlarmNotificationManager.h"
- 
+#import "NSDate+Addition.h"
 
 @implementation AlarmNotificationManager
 + (void)addLocalAlarm:(AlarmClockEntity *)entity{
-    //定义本地通知对象
-    UILocalNotification *notification=[[UILocalNotification alloc]init];
-    //设置调用时间
-    notification.fireDate=[NSDate dateWithTimeIntervalSinceNow:5.0];//通知触发的时间，10s以后
-    notification.repeatInterval=2;//通知重复次数
+    if (entity.repeatDaysInWeek.count <= 0) {
+        //无重复
+        UILocalNotification *notification=[[UILocalNotification alloc]init];
+        NSDate *now = [NSDate date];
+        if ([entity.fireDate compare:now] == NSOrderedDescending) {
+            //设置调用时间
+            notification.fireDate=entity.fireDate;
+        } else {
+            //已经过了当天时间，需要在第二天通知
+            notification.fireDate = [entity.fireDate dateByAddingTimeInterval:60 * 60 * 24];
+        }
+        //设置通知属性
+        notification.repeatInterval = 0;
+        notification.alertBody= entity.tagMessage;
+        notification.alertAction=@"关闭闹钟";
+        notification.alertLaunchImage=@"Default";
+        notification.soundName= [entity.soundPath lastPathComponent];
+        notification.userInfo=@{@"app":@"alarmClock",@"num":@(entity.num)};
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    } else {
+        //有重复
+        
+    }
     
     
-    //    NSCalendar *calendar=[NSCalendar currentCalendar];
-    //    [calendar setTimeZone:[NSTimeZone defaultTimeZone]];
-    //    notification.repeatCalendar=calendar;//当前日历，使用前最好设置时区等信息以便能够自动同步时间
+    [[self class] showNotificaion];
     
-    //设置通知属性
-    notification.alertBody= entity.tagMessage; //通知主体
-    notification.alertAction=@"关闭闹钟"; //待机界面的滑动动作提示
-    notification.alertLaunchImage=@"Default";//通过点击通知打开应用时的启动图片,这里使用程序启动图片
-    notification.soundName= [entity.soundPath lastPathComponent];//收到通知时播放的声音，默认消息声音
-//        notification.soundName=@"sms-received5.wav";//通知声音（需要真机才能听到声音）
     
-    //设置用户信息
-    notification.userInfo=@{@"id":@1,@"user":@"jredu"};//绑定到通知上的其他附加信息
-    
-    //调用通知
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-
 }
 
 + (void)removeAlarm:(AlarmClockEntity *)entity{
-    
+    //拿到 存有 所有 推送的数组
+    NSArray * array = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    //便利这个数组 根据 key 拿到我们想要的 UILocalNotification
+    for (UILocalNotification * loc in array) {
+        if ([[loc.userInfo objectForKey:@"key"] isEqualToString:@"name"]) {
+            //取消 本地推送
+            [[UIApplication sharedApplication] cancelLocalNotification:loc];
+        }
+    }
+}
+
++ (void)showNotificaion{
+    NSArray * array = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    //声明本地通知对象
+    for (UILocalNotification *noti in array) {
+        if ([[noti.userInfo objectForKey:@"app"] isEqualToString:@"alarmClock"]) {
+            NSLog(@"%@",noti);
+        }
+    }
 }
 @end

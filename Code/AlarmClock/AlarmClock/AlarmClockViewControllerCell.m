@@ -7,12 +7,13 @@
 //
 
 #import "AlarmClockViewControllerCell.h"
+#import "NSDate+Addition.h"
 
 
 
 @implementation AlarmClockViewControllerCell
 - (void)setDisplayView:(AlarmClockEntity *)entity{
-    self.timeLable.text = entity.time;
+    self.timeLable.text = [NSDate getStringForDate:entity.fireDate format:@"HH:mm"];
     self.tagMessageLabel.text = entity.tagMessage;
     self.openSwitch.on = entity.isOpen;
 }
