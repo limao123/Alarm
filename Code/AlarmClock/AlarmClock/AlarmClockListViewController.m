@@ -8,8 +8,9 @@
 
 #import "AlarmClockListViewController.h"
 #import "AlarmClockViewControllerCell.h"
+#import "AlarmClockManager.h"
 
-    static NSString * AlarmClockIdentifier = @"AlarmClockCell";
+static NSString * AlarmClockIdentifier = @"AlarmClockCell";
 
 @interface AlarmClockListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -35,7 +36,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+}
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.clocks = [[AlarmClockManager shareAlarmClockManager] alarmClocks];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,15 +52,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return self.clocks.count;
-    return 10;
+    return self.clocks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     AlarmClockViewControllerCell *cell = [tableView dequeueReusableCellWithIdentifier:AlarmClockIdentifier forIndexPath:indexPath];
-    
-    
+    AlarmClockEntity *entity = self.clocks[indexPath.row];
+    [cell setDisplayView:entity];
     return cell;
 }
 
@@ -68,13 +75,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

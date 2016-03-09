@@ -13,6 +13,7 @@
 #import "RingSelectViewController.h"
 #import "FileUtil.h"
 #import "AlarmClockManager.h"
+#import "AlarmNotificationManager.h"
 
 @interface AlarmClockEditViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
@@ -28,6 +29,8 @@
     NSDate *date = self.timePicker.date;
     self.alarmClock.time = [NSDate getStringForDate:date format:@"HH:mm"];
     [[AlarmClockManager shareAlarmClockManager] addAlarmClock:self.alarmClock];
+    [AlarmNotificationManager addLocalAlarm:self.alarmClock];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)cancelPressed:(id)sender {
@@ -47,11 +50,13 @@
     //设置观察者
     if (!self.alarmClock) {
         self.alarmClock = [[AlarmClockEntity alloc] init];
-         [self.alarmClock addObserver:self forKeyPath:@"repeatDaysInWeek" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+        self.alarmClock.tagMessage = @"闹钟";
+        self.alarmClock.isOpen = YES;
+        [self.alarmClock addObserver:self forKeyPath:@"repeatDaysInWeek" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
         [self.alarmClock addObserver:self forKeyPath:@"tagMessage" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
         [self.alarmClock addObserver:self forKeyPath:@"soundPath" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     }
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -105,7 +110,7 @@
         default:
             break;
     }
-                    
+    
     return cell;
     
 }
@@ -135,6 +140,7 @@
             };
             [self.navigationController pushViewController:tagEditVC animated:YES];
         }
+            break;
             
         case 2:{
             RingSelectViewController *ringSelectVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RingSelectVC"];
@@ -147,6 +153,7 @@
             [self.navigationController pushViewController:ringSelectVC animated:YES];
             
         }
+            break;
             
             
         default:
@@ -169,26 +176,26 @@
     if (repeatDayInWeek.count == 7) {
         return @"每天";
     } else if (repeatDayInWeek.count == 5 &&
-        ([repeatDayInWeek containsObject:@0] &&
-         [repeatDayInWeek containsObject:@1] &&
-         [repeatDayInWeek containsObject:@2] &&
-         [repeatDayInWeek containsObject:@3] &&
-         [repeatDayInWeek containsObject:@4])) {
-        return @"工作日";
-    } else if (repeatDayInWeek.count == 0) {
-        return @"不重复";
-    } else if (repeatDayInWeek.count == 1) {
-        NSInteger day = [self.alarmClock.repeatDaysInWeek[0] integerValue];
-        NSString *dayStr = [[RepeatSelectViewController weeksList] objectAtIndex:day];
-        return [NSString stringWithFormat:@"每周%@",dayStr];
-    } else {
-        NSString *display  = @"";
-        for (NSNumber *day in repeatDayInWeek) {
-            NSString *dayStr = [[RepeatSelectViewController weeksList] objectAtIndex:[day integerValue]];
-            display = [display stringByAppendingString:[NSString stringWithFormat:@" 周%@",dayStr]];
-        }
-        return display;
-    }
+               ([repeatDayInWeek containsObject:@0] &&
+                [repeatDayInWeek containsObject:@1] &&
+                [repeatDayInWeek containsObject:@2] &&
+                [repeatDayInWeek containsObject:@3] &&
+                [repeatDayInWeek containsObject:@4])) {
+                   return @"工作日";
+               } else if (repeatDayInWeek.count == 0) {
+                   return @"不重复";
+               } else if (repeatDayInWeek.count == 1) {
+                   NSInteger day = [self.alarmClock.repeatDaysInWeek[0] integerValue];
+                   NSString *dayStr = [[RepeatSelectViewController weeksList] objectAtIndex:day];
+                   return [NSString stringWithFormat:@"每周%@",dayStr];
+               } else {
+                   NSString *display  = @"";
+                   for (NSNumber *day in repeatDayInWeek) {
+                       NSString *dayStr = [[RepeatSelectViewController weeksList] objectAtIndex:[day integerValue]];
+                       display = [display stringByAppendingString:[NSString stringWithFormat:@" 周%@",dayStr]];
+                   }
+                   return display;
+               }
     
 }
 
@@ -197,7 +204,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
-
+    
 }
 
 #pragma mark - KVO
@@ -223,7 +230,7 @@
     [self.alarmClock removeObserver:self forKeyPath:@"repeatDaysInWeek" context:NULL];
     [self.alarmClock removeObserver:self forKeyPath:@"tagMessage" context:NULL];
     [self.alarmClock removeObserver:self forKeyPath:@"soundPath" context:NULL];
-
+    
 }
 
 

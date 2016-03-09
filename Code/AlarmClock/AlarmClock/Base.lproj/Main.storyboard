@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cDe-Yk-DRr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cDe-Yk-DRr">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -36,6 +36,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WT7-cD-T9P">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="闹钟" id="aRz-0I-vBN">
+                                        <barButtonItem key="leftBarButtonItem" title="编辑" id="Shq-qA-ab4">
+                                            <connections>
+                                                <action selector="editButton:" destination="hwq-BN-CzK" id="bfZ-1W-Vuh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QrW-N8-lNP">
+                                            <connections>
+                                                <action selector="addAlarmClock:" destination="hwq-BN-CzK" id="Wju-fN-bVe"/>
+                                                <segue destination="GOG-pN-nZF" kind="modal" id="9DL-Bw-0bd"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oFL-BD-c6v">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,6 +103,11 @@
                                                 <constraint firstItem="V75-D7-iwz" firstAttribute="top" secondItem="NYV-kL-JJ7" secondAttribute="topMargin" id="tBP-5B-Edd"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="openSwitch" destination="lee-QF-Gqs" id="Vlt-t8-YB2"/>
+                                            <outlet property="tagMessageLabel" destination="gAI-SK-62h" id="MIQ-JG-3jW"/>
+                                            <outlet property="timeLable" destination="V75-D7-iwz" id="dJi-IP-9lj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -91,25 +115,6 @@
                                     <outlet property="delegate" destination="hwq-BN-CzK" id="eNn-sP-xej"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WT7-cD-T9P">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <navigationItem title="闹钟" id="aRz-0I-vBN">
-                                        <barButtonItem key="leftBarButtonItem" title="编辑" id="Shq-qA-ab4">
-                                            <connections>
-                                                <action selector="editButton:" destination="hwq-BN-CzK" id="bfZ-1W-Vuh"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QrW-N8-lNP">
-                                            <connections>
-                                                <action selector="addAlarmClock:" destination="hwq-BN-CzK" id="Wju-fN-bVe"/>
-                                                <segue destination="GOG-pN-nZF" kind="modal" id="9DL-Bw-0bd"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -129,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVq-qk-3Gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="125" y="244"/>
+            <point key="canvasLocation" x="140" y="243"/>
         </scene>
         <!--Alarm Clock Edit View Controller-->
         <scene sceneID="9do-gr-xhk">
@@ -406,6 +411,7 @@
         <!--Navigation Controller-->
         <scene sceneID="FBz-uo-ba3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CSM-nt-EjF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="GOG-pN-nZF" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bS9-F8-D8T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -415,7 +421,6 @@
                         <segue destination="tjP-zv-BOe" kind="relationship" relationship="rootViewController" id="gAA-rr-mfF"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CSM-nt-EjF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="560" y="511"/>
         </scene>

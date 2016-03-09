@@ -11,5 +11,9 @@
 
 
 @implementation AlarmClockViewControllerCell
-
+- (void)setDisplayView:(AlarmClockEntity *)entity{
+    self.timeLable.text = entity.time;
+    self.tagMessageLabel.text = entity.tagMessage;
+    self.openSwitch.on = entity.isOpen;
+}
 @end

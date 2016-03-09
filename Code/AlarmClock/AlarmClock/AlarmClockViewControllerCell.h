@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlarmClockViewControllerCell : UITableViewCell
+#import "AlarmClockEntity.h"
 
+@interface AlarmClockViewControllerCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *timeLable;
+
+@property (weak, nonatomic) IBOutlet UILabel *tagMessageLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *openSwitch;
+- (void)setDisplayView:(AlarmClockEntity *)entity;
 @end

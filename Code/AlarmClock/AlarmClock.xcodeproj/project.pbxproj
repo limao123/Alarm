@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3878F8F21C9026A50057AD9B /* AlarmNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3878F8F11C9026A50057AD9B /* AlarmNotificationManager.m */; };
 		AB836E921C859057003159E7 /* CALayer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = AB836E871C859057003159E7 /* CALayer+Addition.m */; };
 		AB836E931C859057003159E7 /* NSString+check.m in Sources */ = {isa = PBXBuildFile; fileRef = AB836E891C859057003159E7 /* NSString+check.m */; };
 		AB836E941C859057003159E7 /* PMUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB836E8B1C859057003159E7 /* PMUILabel.m */; };
@@ -34,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3878F8F01C9026A50057AD9B /* AlarmNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmNotificationManager.h; sourceTree = "<group>"; };
+		3878F8F11C9026A50057AD9B /* AlarmNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmNotificationManager.m; sourceTree = "<group>"; };
 		AB70304A1C8934E900AF98D2 /* AlarmClock.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarmClock.pch; sourceTree = SOURCE_ROOT; };
 		AB836E861C859057003159E7 /* CALayer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Addition.h"; sourceTree = "<group>"; };
 		AB836E871C859057003159E7 /* CALayer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Addition.m"; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				ABEFCF321C87250E0020629B /* TagEditViewController.m */,
 				AB9EDEE21C8DAD8F00A132CB /* RingSelectViewController.h */,
 				AB9EDEE31C8DAD8F00A132CB /* RingSelectViewController.m */,
+				3878F8F01C9026A50057AD9B /* AlarmNotificationManager.h */,
+				3878F8F11C9026A50057AD9B /* AlarmNotificationManager.m */,
 				ABD9DF4E1C841D870016D5B6 /* Main.storyboard */,
 				ABD9DF531C841D870016D5B6 /* LaunchScreen.storyboard */,
 				ABD9DF561C841D870016D5B6 /* Info.plist */,
@@ -212,6 +217,7 @@
 				TargetAttributes = {
 					ABD9DF411C841D870016D5B6 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = ZVBJ5UPUFX;
 					};
 				};
 			};
@@ -259,6 +265,7 @@
 				AB836E9A1C8590D0003159E7 /* NSDate+Addition.m in Sources */,
 				ABEFCF331C87250E0020629B /* TagEditViewController.m in Sources */,
 				AB836E941C859057003159E7 /* PMUILabel.m in Sources */,
+				3878F8F21C9026A50057AD9B /* AlarmNotificationManager.m in Sources */,
 				ABD9DF6A1C844E8B0016D5B6 /* AlarmClockEditViewController.m in Sources */,
 				ABD9DF641C8431B70016D5B6 /* AlarmClockEntity.m in Sources */,
 				ABD9DF671C8449EA0016D5B6 /* AlarmClockManager.m in Sources */,
@@ -381,10 +388,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AlarmClock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = limaofuyuanzhang.AlarmClock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -392,10 +402,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AlarmClock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = limaofuyuanzhang.AlarmClock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

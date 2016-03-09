@@ -14,6 +14,11 @@
 @end
 
 @implementation AlarmClockManager
+
+- (NSArray *)alarmClocks{
+    return [self.clocks copy];
+}
+
 + (instancetype)shareAlarmClockManager{
     static AlarmClockManager *shared = nil;
     static dispatch_once_t onceToken;
