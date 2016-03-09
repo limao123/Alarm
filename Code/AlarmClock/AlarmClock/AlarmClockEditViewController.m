@@ -12,6 +12,7 @@
 #import "TagEditViewController.h"
 #import "RingSelectViewController.h"
 #import "FileUtil.h"
+#import "AlarmClockManager.h"
 
 @interface AlarmClockEditViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIDatePicker *timePicker;
@@ -26,6 +27,7 @@
 - (void)storePressed:(id)sender {
     NSDate *date = self.timePicker.date;
     self.alarmClock.time = [NSDate getStringForDate:date format:@"HH:mm"];
+    [[AlarmClockManager shareAlarmClockManager] addAlarmClock:self.alarmClock];
 }
 
 - (void)cancelPressed:(id)sender {
