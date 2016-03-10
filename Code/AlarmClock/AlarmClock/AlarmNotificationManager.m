@@ -20,7 +20,7 @@
             notification.fireDate=entity.fireDate;
         } else {
             //已经过了当天时间，需要在第二天通知
-            notification.fireDate = [entity.fireDate dateByAddingTimeInterval:60 * 60 * 24];
+            notification.fireDate = [entity.fireDate dateByAddingTimeInterval:DaySumSecond];
         }
         //设置通知属性
         notification.repeatInterval = 0;
@@ -32,13 +32,47 @@
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     } else {
         //有重复
-        
+        NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSWeekdayCalendarUnit fromDate:entity.fireDate];
+        int weekday = [[self class] getChinaWeekDay:[componets weekday]];
+        for (NSNumber *day in entity.repeatDaysInWeek) {
+            UILocalNotification *notification=[[UILocalNotification alloc]init];
+            NSDate *now = [NSDate date];
+            NSInteger dayInt = [day integerValue];
+            if ( dayInt > weekday) {
+                notification.fireDate = [entity.fireDate dateByAddingTimeInterval:(weekday-dayInt)*DaySumSecond];
+                
+            } else if(day < weekday){
+                notification.fireDate = [entity.fireDate dateByAddingTimeInterval:(dayInt + 7 - weekday)*DaySumSecond];
+
+            } else {
+                if () {
+                    <#statements#>
+                }
+            }
+            
+            //设置通知属性
+            notification.repeatInterval = NSCalendarUnitWeekday;
+            notification.alertBody= entity.tagMessage;
+            notification.alertAction=@"关闭闹钟";
+            notification.alertLaunchImage=@"Default";
+            notification.soundName= [entity.soundPath lastPathComponent];
+            notification.userInfo=@{@"app":@"alarmClock",@"num":@(entity.num)};
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        }
     }
     
     
     [[self class] showNotificaion];
     
     
+}
+
++ (int)getChinaWeekDay:(int)day{
+    if (day == 0) {
+        return 6;
+    } else {
+        return day-1;
+    }
 }
 
 + (void)removeAlarm:(AlarmClockEntity *)entity{
