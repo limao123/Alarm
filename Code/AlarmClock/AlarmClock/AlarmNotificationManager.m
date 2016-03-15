@@ -11,6 +11,8 @@
 
 @implementation AlarmNotificationManager
 + (void)addLocalAlarm:(AlarmClockEntity *)entity{
+    [self removeAlarm:entity];
+    
     if (entity.repeatDaysInWeek.count <= 0) {
         //无重复
         UILocalNotification *notification=[[UILocalNotification alloc]init];
@@ -33,25 +35,31 @@
     } else {
         //有重复
         NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSWeekdayCalendarUnit fromDate:entity.fireDate];
-        int weekday = [[self class] getChinaWeekDay:[componets weekday]];
+        int weekdayInt = [[self class] getChinaWeekDay:[componets weekday]];
         for (NSNumber *day in entity.repeatDaysInWeek) {
             UILocalNotification *notification=[[UILocalNotification alloc]init];
             NSDate *now = [NSDate date];
+            //表示需要响的时间
             NSInteger dayInt = [day integerValue];
-            if ( dayInt > weekday) {
-                notification.fireDate = [entity.fireDate dateByAddingTimeInterval:(weekday-dayInt)*DaySumSecond];
+            if ( dayInt > weekdayInt) {
+                notification.fireDate = [entity.fireDate dateByAddingTimeInterval:(dayInt-weekdayInt)*DaySumSecond];
                 
-            } else if(day < weekday){
-                notification.fireDate = [entity.fireDate dateByAddingTimeInterval:(dayInt + 7 - weekday)*DaySumSecond];
+            } else if(dayInt < weekdayInt){
+                notification.fireDate = [entity.fireDate dateByAddingTimeInterval:(dayInt + 7 - weekdayInt)*DaySumSecond];
 
             } else {
-                if () {
-                    <#statements#>
+                NSDate *now = [NSDate date];
+                if ([entity.fireDate compare:now] == NSOrderedDescending) {
+                    //设置调用时间
+                    notification.fireDate=entity.fireDate;
+                } else {
+                    //已经过了当天时间，需要在第二天通知
+                    notification.fireDate = [entity.fireDate dateByAddingTimeInterval:7*DaySumSecond];
                 }
             }
             
             //设置通知属性
-            notification.repeatInterval = NSCalendarUnitWeekday;
+            notification.repeatInterval = NSWeekCalendarUnit;
             notification.alertBody= entity.tagMessage;
             notification.alertAction=@"关闭闹钟";
             notification.alertLaunchImage=@"Default";
@@ -63,15 +71,16 @@
     
     
     [[self class] showNotificaion];
+
     
     
 }
 
 + (int)getChinaWeekDay:(int)day{
-    if (day == 0) {
+    if (day == 1) {
         return 6;
     } else {
-        return day-1;
+        return day-2;
     }
 }
 
@@ -80,7 +89,7 @@
     NSArray * array = [[UIApplication sharedApplication] scheduledLocalNotifications];
     //便利这个数组 根据 key 拿到我们想要的 UILocalNotification
     for (UILocalNotification * loc in array) {
-        if ([[loc.userInfo objectForKey:@"key"] isEqualToString:@"name"]) {
+        if ([[loc.userInfo objectForKey:@"app"] isEqualToString:@"alarmClock"]) {
             //取消 本地推送
             [[UIApplication sharedApplication] cancelLocalNotification:loc];
         }

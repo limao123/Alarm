@@ -29,11 +29,12 @@
     self.alarmClock.fireDate = self.timePicker.date;
     [[AlarmClockManager shareAlarmClockManager] addAlarmClock:self.alarmClock];
     [AlarmNotificationManager addLocalAlarm:self.alarmClock];
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 - (void)cancelPressed:(id)sender {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - VC circle
