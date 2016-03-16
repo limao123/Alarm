@@ -19,9 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[RCIM sharedRCIM] initWithAppKey:@"pkfcgjstfb7n8"];
-
-    
+    [[RCIM sharedRCIM] initWithAppKey:@"pkfcgjstfb7n8"];    
     if ([[UIApplication sharedApplication] currentUserNotificationSettings].types==UIUserNotificationTypeNone){
         [[UIApplication sharedApplication]registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound  categories:nil]];
     }
