@@ -15,12 +15,13 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        self.num = [aDecoder decodeIntegerForKey:@"num"];
-        self.fireDate = [aDecoder decodeObjectForKey:@"fireDate"];
-        self.repeatDaysInWeek = [aDecoder decodeObjectForKey:@"repeatDaysInWeek"];
-        self.tagMessage = [aDecoder decodeObjectForKey:@"soundPath"];
-        self.isLaterRepeat = [aDecoder decodeBoolForKey:@"isLaterRepeat"];
-        self.isOpen = [aDecoder decodeObjectForKey:@"isOpen"];
+        _num = [aDecoder decodeIntegerForKey:@"num"];
+        _fireDate = [aDecoder decodeObjectForKey:@"fireDate"];
+        _repeatDaysInWeek = [aDecoder decodeObjectForKey:@"repeatDaysInWeek"];
+        _tagMessage = [aDecoder decodeObjectForKey:@"tagMessage"];
+        _soundPath = [aDecoder decodeObjectForKey:@"soundPath"];
+        _isLaterRepeat = [aDecoder decodeBoolForKey:@"isLaterRepeat"];
+        _isOpen = [aDecoder decodeBoolForKey:@"isOpen"];
     }
     return self;
 }
@@ -29,7 +30,8 @@
     [aCoder encodeInteger:self.num forKey:@"num"];
     [aCoder encodeObject:self.fireDate forKey:@"fireDate"];
     [aCoder encodeObject:self.repeatDaysInWeek forKey:@"repeatDaysInWeek"];
-    [aCoder encodeObject:self.tagMessage forKey:@"soundPath"];
+    [aCoder encodeObject:self.tagMessage forKey:@"tagMessage"];
+    [aCoder encodeObject:self.soundPath forKey:@"soundPath"];
     [aCoder encodeBool:self.isLaterRepeat forKey:@"isLaterRepeat"];
     [aCoder encodeBool:self.isOpen forKey:@"isOpen"];
 }
@@ -45,5 +47,9 @@
     } else {
         return false;
     }
+}
+
+- (NSString *)description{
+    return [NSString stringWithFormat:@"fireDate:%@\\n repeatDaysInWeek:%@\\n tagMessage:%@\\n soundPath:%@\\n isLaterRepeat:%@\\n isOpen:%@\\n",self.fireDate,self.repeatDaysInWeek,self.tagMessage,self.soundPath,@(self.isLaterRepeat),@(self.isOpen)];
 }
 @end

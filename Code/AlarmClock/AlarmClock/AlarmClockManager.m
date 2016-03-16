@@ -31,15 +31,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        NSString *path = [self dataFilePath];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-            NSMutableData *data = [[NSMutableData alloc] initWithContentsOfFile:path];
-            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-            self.clocks = [unarchiver decodeObjectForKey:@"clocks"];
-            [unarchiver finishDecoding];
-        } else {
-            self.clocks = [[NSMutableArray alloc] initWithCapacity:1];
-        }
+        self.clocks = [self load];
     }
     return self;
 }
@@ -65,7 +57,22 @@
     [archiver finishEncoding];
     [data writeToFile:path atomically:YES];
 
+    NSLog(@"%@",[self load]);
+    
+}
 
+- (NSMutableArray *)load{
+    NSMutableArray *clocks;
+    NSString *path = [self dataFilePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSMutableData *data = [[NSMutableData alloc] initWithContentsOfFile:path];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        clocks = [unarchiver decodeObjectForKey:@"clocks"];
+        [unarchiver finishDecoding];
+    } else {
+        clocks = [[NSMutableArray alloc] initWithCapacity:1];
+    }
+    return clocks;
 }
 
 - (NSString *)dataFilePath{
