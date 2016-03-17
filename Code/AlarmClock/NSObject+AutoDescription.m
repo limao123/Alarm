@@ -28,12 +28,12 @@
 
 	dispatch_queue_t currentQueue = dispatch_get_current_queue();
 	
-	id associatedObject = objc_getAssociatedObject(self, currentQueue);
+	id associatedObject = objc_getAssociatedObject(self, (__bridge const void *)(currentQueue));
 	if (associatedObject) {
 		return @"(self)";
 	}
 
-	objc_setAssociatedObject(self, currentQueue, result, OBJC_ASSOCIATION_RETAIN);
+	objc_setAssociatedObject(self, (__bridge const void *)(currentQueue), result, OBJC_ASSOCIATION_RETAIN);
 
 	Class currentClass = [self class];
 	while (currentClass != [NSObject class]) {
@@ -56,7 +56,7 @@
 		[result deleteCharactersInRange:NSMakeRange(length - 1, 1)];
 	}
 
-	objc_setAssociatedObject(self, currentQueue, nil, OBJC_ASSOCIATION_RETAIN);
+	objc_setAssociatedObject(self, (__bridge const void *)(currentQueue), nil, OBJC_ASSOCIATION_RETAIN);
 
 	return result;
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BD919C31C9A982900B3A343 /* NSObject+AutoDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD919C01C9A982900B3A343 /* NSObject+AutoDescription.m */; };
+		1BD919C41C9A982900B3A343 /* NSObject+CleanDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD919C21C9A982900B3A343 /* NSObject+CleanDescription.m */; };
 		1BF6E1B41C97E84100553A52 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1BF6E1B31C97E84100553A52 /* podfile */; };
 		1BF6E1BF1C97EE8500553A52 /* ConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF6E1BE1C97EE8500553A52 /* ConversationListViewController.m */; };
 		1BF6E1C61C97FA3B00553A52 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF6E1C51C97FA3B00553A52 /* UserInfoViewController.m */; };
@@ -41,6 +43,10 @@
 /* Begin PBXFileReference section */
 		00DD018F92F26AB2830437D5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		03AD1996896805BDD91E1EE6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BD919BF1C9A982900B3A343 /* NSObject+AutoDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoDescription.h"; sourceTree = "<group>"; };
+		1BD919C01C9A982900B3A343 /* NSObject+AutoDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoDescription.m"; sourceTree = "<group>"; };
+		1BD919C11C9A982900B3A343 /* NSObject+CleanDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CleanDescription.h"; sourceTree = "<group>"; };
+		1BD919C21C9A982900B3A343 /* NSObject+CleanDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CleanDescription.m"; sourceTree = "<group>"; };
 		1BF6E1B31C97E84100553A52 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
 		1BF6E1BD1C97EE8500553A52 /* ConversationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationListViewController.h; sourceTree = "<group>"; };
 		1BF6E1BE1C97EE8500553A52 /* ConversationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationListViewController.m; sourceTree = "<group>"; };
@@ -220,6 +226,10 @@
 		AB836E851C859031003159E7 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				1BD919BF1C9A982900B3A343 /* NSObject+AutoDescription.h */,
+				1BD919C01C9A982900B3A343 /* NSObject+AutoDescription.m */,
+				1BD919C11C9A982900B3A343 /* NSObject+CleanDescription.h */,
+				1BD919C21C9A982900B3A343 /* NSObject+CleanDescription.m */,
 				AB836E861C859057003159E7 /* CALayer+Addition.h */,
 				AB836E871C859057003159E7 /* CALayer+Addition.m */,
 				AB836E881C859057003159E7 /* NSString+check.h */,
@@ -432,10 +442,12 @@
 				ABD9DF641C8431B70016D5B6 /* AlarmClockEntity.m in Sources */,
 				ABD9DF671C8449EA0016D5B6 /* AlarmClockManager.m in Sources */,
 				AB836E961C859057003159E7 /* UICustomSwitch.m in Sources */,
+				1BD919C31C9A982900B3A343 /* NSObject+AutoDescription.m in Sources */,
 				1BF6E1BF1C97EE8500553A52 /* ConversationListViewController.m in Sources */,
 				AB9EDEE41C8DAD8F00A132CB /* RingSelectViewController.m in Sources */,
 				ABD9DF611C8428960016D5B6 /* AlarmClockViewControllerCell.m in Sources */,
 				AB836E971C859057003159E7 /* UINavigationBar+BackgroundColor.m in Sources */,
+				1BD919C41C9A982900B3A343 /* NSObject+CleanDescription.m in Sources */,
 				AB836E921C859057003159E7 /* CALayer+Addition.m in Sources */,
 				AB836E931C859057003159E7 /* NSString+check.m in Sources */,
 				ABD9DF471C841D870016D5B6 /* main.m in Sources */,

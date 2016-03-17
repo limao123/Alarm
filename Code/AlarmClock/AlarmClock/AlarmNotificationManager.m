@@ -84,16 +84,24 @@
     }
 }
 
+
 + (void)removeAlarm:(AlarmClockEntity *)entity{
-    //拿到 存有 所有 推送的数组
+    //拿到存有所有推送的数组
     NSArray * array = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    //便利这个数组 根据 key 拿到我们想要的 UILocalNotification
+    //便利这个数组根据 key 拿到我们想要的UILocalNotification
     for (UILocalNotification * loc in array) {
-        if ([[loc.userInfo objectForKey:@"app"] isEqualToString:@"alarmClock"]) {
-            //取消 本地推送
+        if ([[loc.userInfo objectForKey:@"app"] isEqualToString:@"alarmClock"] &&
+            [[loc.userInfo objectForKey:@"num"] integerValue] == entity.num) {
+            //取消本地推送
             [[UIApplication sharedApplication] cancelLocalNotification:loc];
         }
     }
+}
+
+//更新闹钟
++ (void)updateAlarm:(AlarmClockEntity *)entity{
+    [[self class] removeAlarm:entity];
+    [[self class] addLocalAlarm:entity];
 }
 
 + (void)showNotificaion{

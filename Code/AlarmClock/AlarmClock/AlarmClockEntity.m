@@ -7,6 +7,7 @@
 //
 
 #import "AlarmClockEntity.h"
+#import "NSObject+AutoDescription.h"
 
 
 
@@ -50,6 +51,6 @@
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"fireDate:%@\\n repeatDaysInWeek:%@\\n tagMessage:%@\\n soundPath:%@\\n isLaterRepeat:%@\\n isOpen:%@\\n",self.fireDate,self.repeatDaysInWeek,self.tagMessage,self.soundPath,@(self.isLaterRepeat),@(self.isOpen)];
+    return [self autoDescription];
 }
 @end

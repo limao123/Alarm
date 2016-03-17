@@ -56,9 +56,6 @@
     [archiver encodeObject:self.clocks forKey:@"clocks"];
     [archiver finishEncoding];
     [data writeToFile:path atomically:YES];
-
-    NSLog(@"%@",[self load]);
-    
 }
 
 - (NSMutableArray *)load{
@@ -73,6 +70,14 @@
         clocks = [[NSMutableArray alloc] initWithCapacity:1];
     }
     return clocks;
+}
+
+- (void)showLocalAlarm{
+    NSLog(@"%@",[self load]);
+}
+
+- (void)showAlaams{
+    NSLog(@"%@",self.clocks);
 }
 
 - (NSString *)dataFilePath{

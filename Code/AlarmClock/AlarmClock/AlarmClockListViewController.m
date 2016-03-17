@@ -9,6 +9,7 @@
 #import "AlarmClockListViewController.h"
 #import "AlarmClockViewControllerCell.h"
 #import "AlarmClockManager.h"
+#import "AlarmClockEditViewController.h"
 
 static NSString * AlarmClockIdentifier = @"AlarmClockCell";
 
@@ -64,6 +65,15 @@ static NSString * AlarmClockIdentifier = @"AlarmClockCell";
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    AlarmClockEditViewController *alarmClockEditVC = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"AlarmClockEditVC"];
+    alarmClockEditVC.alarmClock = self.clocks[indexPath.row];
+    alarmClockEditVC.isNew = NO;
+    [self.navigationController pushViewController:alarmClockEditVC animated:YES];
+    
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
@@ -74,14 +84,18 @@ static NSString * AlarmClockIdentifier = @"AlarmClockCell";
     }
 }
 
-/*
+
  #pragma mark - Navigation
  
- // In a storyboard-based application, you will often want to do a little preparation before navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
+     if ([segue.identifier isEqualToString:@"newAlarmClock"]) {
+         AlarmClockEditViewController *alarmClockEditVC = [segue destinationViewController];
+         alarmClockEditVC.isNew = YES;
+     }
  }
- */
+
 
 @end

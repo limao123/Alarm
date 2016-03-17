@@ -26,9 +26,18 @@
 
 #pragma mark - navigationBar
 - (void)storePressed:(id)sender {
-    self.alarmClock.fireDate = self.timePicker.date;
-    [[AlarmClockManager shareAlarmClockManager] addAlarmClock:self.alarmClock];
-    [AlarmNotificationManager addLocalAlarm:self.alarmClock];
+    if (self.isNew) {
+        self.alarmClock.fireDate = self.timePicker.date;
+        [[AlarmClockManager shareAlarmClockManager] addAlarmClock:self.alarmClock];
+        [AlarmNotificationManager addLocalAlarm:self.alarmClock];
+    } else {
+        self.alarmClock.fireDate = self.timePicker.date;
+        [[AlarmClockManager shareAlarmClockManager] save];
+        [[AlarmClockManager shareAlarmClockManager] showLocalAlarm];
+        [AlarmNotificationManager updateAlarm:self.alarmClock];
+        [AlarmNotificationManager showNotificaion];
+    }
+
     [self.navigationController popViewControllerAnimated:YES];
 
 }
@@ -50,13 +59,13 @@
     //设置观察者
     if (!self.alarmClock) {
         self.alarmClock = [[AlarmClockEntity alloc] init];
-        self.alarmClock.tagMessage = @"闹钟";
-        self.alarmClock.isOpen = YES;
-        self.alarmClock.soundPath = [[NSBundle mainBundle] pathForResource:@"ring1" ofType:@"wav"];
-        [self.alarmClock addObserver:self forKeyPath:@"repeatDaysInWeek" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-        [self.alarmClock addObserver:self forKeyPath:@"tagMessage" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-        [self.alarmClock addObserver:self forKeyPath:@"soundPath" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     }
+    self.alarmClock.tagMessage = @"闹钟";
+    self.alarmClock.isOpen = YES;
+    self.alarmClock.soundPath = [[NSBundle mainBundle] pathForResource:@"ring1" ofType:@"wav"];
+    [self.alarmClock addObserver:self forKeyPath:@"repeatDaysInWeek" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    [self.alarmClock addObserver:self forKeyPath:@"tagMessage" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    [self.alarmClock addObserver:self forKeyPath:@"soundPath" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     
 }
 

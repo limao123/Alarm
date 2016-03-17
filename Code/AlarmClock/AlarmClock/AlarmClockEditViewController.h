@@ -11,4 +11,5 @@
 
 @interface AlarmClockEditViewController : UIViewController
 @property (strong, nonatomic) AlarmClockEntity *alarmClock;
+@property (unsafe_unretained, nonatomic) BOOL isNew; //是否是新闹钟
 @end

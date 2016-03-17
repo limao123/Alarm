@@ -145,7 +145,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gLq-IX-3uS">
                             <connections>
-                                <segue destination="tjP-zv-BOe" kind="push" id="oma-8p-gdD"/>
+                                <segue destination="tjP-zv-BOe" kind="push" identifier="newAlarmClock" id="oma-8p-gdD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -241,7 +241,7 @@
         <!--Alarm Clock Edit View Controller-->
         <scene sceneID="9do-gr-xhk">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="tjP-zv-BOe" customClass="AlarmClockEditViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlarmClockEditVC" hidesBottomBarWhenPushed="YES" id="tjP-zv-BOe" customClass="AlarmClockEditViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7RF-WF-tws"/>
                         <viewControllerLayoutGuide type="bottom" id="M6k-Zj-5Qb"/>
