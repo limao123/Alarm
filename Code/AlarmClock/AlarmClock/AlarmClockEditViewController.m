@@ -33,9 +33,7 @@
     } else {
         self.alarmClock.fireDate = self.timePicker.date;
         [[AlarmClockManager shareAlarmClockManager] save];
-        [[AlarmClockManager shareAlarmClockManager] showLocalAlarm];
         [AlarmNotificationManager updateAlarm:self.alarmClock];
-        [AlarmNotificationManager showNotificaion];
     }
 
     [self.navigationController popViewControllerAnimated:YES];
@@ -56,17 +54,24 @@
     self.navigationItem.leftBarButtonItem.action = @selector(cancelPressed:);
     self.navigationItem.title = @"添加闹钟";
     
-    //设置观察者
+    //懒加载
     if (!self.alarmClock) {
         self.alarmClock = [[AlarmClockEntity alloc] init];
+        self.alarmClock.fireDate = [NSDate date];
+        self.alarmClock.tagMessage = @"闹钟";
+        self.alarmClock.isOpen = YES;
+        self.alarmClock.soundPath = [[NSBundle mainBundle] pathForResource:@"ring1" ofType:@"wav"];
     }
-    self.alarmClock.tagMessage = @"闹钟";
-    self.alarmClock.isOpen = YES;
-    self.alarmClock.soundPath = [[NSBundle mainBundle] pathForResource:@"ring1" ofType:@"wav"];
+    
+
+    
+    //设置观察者
     [self.alarmClock addObserver:self forKeyPath:@"repeatDaysInWeek" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     [self.alarmClock addObserver:self forKeyPath:@"tagMessage" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     [self.alarmClock addObserver:self forKeyPath:@"soundPath" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     
+    //设置视图
+    [self.timePicker setDate:self.alarmClock.fireDate];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
