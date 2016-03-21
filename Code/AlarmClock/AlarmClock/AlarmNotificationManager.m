@@ -10,6 +10,7 @@
 #import "NSDate+Addition.h"
 
 @implementation AlarmNotificationManager
+
 + (void)addLocalAlarm:(AlarmClockEntity *)entity{
     [self removeAlarm:entity];
     
@@ -68,12 +69,6 @@
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         }
     }
-    
-    
-    [[self class] showNotificaion];
-
-    
-    
 }
 
 + (int)getChinaWeekDay:(int)day{

@@ -76,7 +76,7 @@
     NSLog(@"%@",[self load]);
 }
 
-- (void)showAlaams{
+- (void)showAlarms{
     NSLog(@"%@",self.clocks);
 }
 

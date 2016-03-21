@@ -10,6 +10,7 @@
 #import "AlarmClockViewControllerCell.h"
 #import "AlarmClockManager.h"
 #import "AlarmClockEditViewController.h"
+#import "AlarmNotificationManager.h"
 
 static NSString * AlarmClockIdentifier = @"AlarmClockCell";
 
@@ -37,13 +38,12 @@ static NSString * AlarmClockIdentifier = @"AlarmClockCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.clocks = [[AlarmClockManager shareAlarmClockManager] alarmClocks];
+    self.tableView.editing = NO;
     [self.tableView reloadData];
 }
 
@@ -57,10 +57,9 @@ static NSString * AlarmClockIdentifier = @"AlarmClockCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     AlarmClockViewControllerCell *cell = [tableView dequeueReusableCellWithIdentifier:AlarmClockIdentifier forIndexPath:indexPath];
     AlarmClockEntity *entity = self.clocks[indexPath.row];
-    [cell setDisplayView:entity];
+    cell.entity = entity;
     return cell;
 }
 
@@ -81,6 +80,10 @@ static NSString * AlarmClockIdentifier = @"AlarmClockCell";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //
+        [AlarmNotificationManager removeAlarm:self.clocks[indexPath.row]];
+        [[AlarmClockManager shareAlarmClockManager] removeAlarmClock:self.clocks[indexPath.row]];
+        self.clocks = [AlarmClockManager shareAlarmClockManager].alarmClocks;
+        [self.tableView reloadData];
     }
 }
 

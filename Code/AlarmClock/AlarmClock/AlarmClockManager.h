@@ -52,5 +52,5 @@
 /**
  *  打印内存中的闹钟对象
  */
-- (void)showAlaams;
+- (void)showAlarms;
 @end

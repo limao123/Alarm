@@ -1,5 +1,4 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7E0741752C86FA37F7A42C8BA0E61F2746E5B24F",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
@@ -9,15 +8,15 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2E9E1DAE-B666-496C-8DC1-3CE0B2C9C509",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "8A0661E479F30FFA33C1E2950E8D7DD8006337FE" : "",
-    "7E0741752C86FA37F7A42C8BA0E61F2746E5B24F" : "alarmclock\/"
+    "8A0661E479F30FFA33C1E2950E8D7DD8006337FE" : "..\/..",
+    "7E0741752C86FA37F7A42C8BA0E61F2746E5B24F" : ".."
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "AlarmClock",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Code\/AlarmClock\/AlarmClock.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AlarmClock.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "limaobitbucket.org:limaowork\/alarmclock.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "limaogithub.com:limaofuyuanzhang\/Alarm.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E0741752C86FA37F7A42C8BA0E61F2746E5B24F"
     },

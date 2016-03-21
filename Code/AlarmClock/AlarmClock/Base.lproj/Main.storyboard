@@ -101,6 +101,9 @@
                                                         <constraint firstAttribute="width" constant="49" id="tS2-Ya-LGx"/>
                                                         <constraint firstAttribute="height" constant="31" id="xba-Ke-sKF"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="alarmClockSwicth:" destination="y6p-v8-KhA" eventType="valueChanged" id="brH-m3-Js7"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>

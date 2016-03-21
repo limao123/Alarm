@@ -15,5 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *tagMessageLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *openSwitch;
-- (void)setDisplayView:(AlarmClockEntity *)entity;
+@property (strong, nonatomic) AlarmClockEntity *entity;
+
 @end
