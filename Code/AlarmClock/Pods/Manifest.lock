@@ -1,10 +1,24 @@
 PODS:
+  - AVOSCloud (3.2.7)
+  - AVOSCloudCrashReporting (3.2.7):
+    - AVOSCloud
+  - AVOSCloudIM (3.2.7):
+    - AVOSCloud
   - RongCloudIMKitWithVoip (2.4.9)
+  - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
+  - AVOSCloud
+  - AVOSCloudCrashReporting
+  - AVOSCloudIM
   - RongCloudIMKitWithVoip (= 2.4.9)
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
+  AVOSCloud: 957d1508104d7c8ed501df9d9b734d7a98c2e047
+  AVOSCloudCrashReporting: 68b4c9096c5f465f1cbda4a1d7ea5f04efa930ab
+  AVOSCloudIM: ec08eaec4d27d732e3be93eadeb3bcf1355b5dcf
   RongCloudIMKitWithVoip: c760aa24bc19d7c8df9def29a8ea77acd15bb79d
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
 COCOAPODS: 0.39.0

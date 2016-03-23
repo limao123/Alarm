@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AlarmNotificationManager.h"
 #import <RongIMKit/RongIMKit.h>
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface AppDelegate ()
 
@@ -19,6 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [AVOSCloud setApplicationId:@"SREwaayPxJAyQcoupm96xnHO-gzGzoHsz"
+                      clientKey:@"nfi5S2ds6SnQP2E3EN691TDB"];
     [[RCIM sharedRCIM] initWithAppKey:@"pkfcgjstfb7n8"];    
     if ([[UIApplication sharedApplication] currentUserNotificationSettings].types==UIUserNotificationTypeNone){
         [[UIApplication sharedApplication]registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound  categories:nil]];

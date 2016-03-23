@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <RongIMKit/RongIMKit.h>
 
-@interface UserInfoViewController : UIViewController<RCIMUserInfoDataSource>
+@interface UserInfoViewController : UITableViewController<RCIMUserInfoDataSource>
 
 @end

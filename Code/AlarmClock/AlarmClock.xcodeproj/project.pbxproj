@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B71DC421CA2814D00DD683C /* SmsCodeEnterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B71DC411CA2814D00DD683C /* SmsCodeEnterViewController.m */; };
+		1B71DC451CA2904A00DD683C /* PublicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B71DC441CA2904A00DD683C /* PublicView.m */; };
+		1B75152D1CA1372000B1470B /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B75152C1CA1372000B1470B /* LoginRegister.storyboard */; };
+		1B7515371CA1373A00B1470B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7515301CA1373A00B1470B /* LoginViewController.m */; };
+		1B7515381CA1373A00B1470B /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7515321CA1373A00B1470B /* RegisterViewController.m */; };
+		1B7515391CA1373A00B1470B /* FindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7515341CA1373A00B1470B /* FindPasswordViewController.m */; };
+		1B75153A1CA1373A00B1470B /* ProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7515361CA1373A00B1470B /* ProtocolViewController.m */; };
+		1B75153C1CA137D600B1470B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B75153B1CA137D600B1470B /* Images.xcassets */; };
 		1BD919C31C9A982900B3A343 /* NSObject+AutoDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD919C01C9A982900B3A343 /* NSObject+AutoDescription.m */; };
 		1BD919C41C9A982900B3A343 /* NSObject+CleanDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD919C21C9A982900B3A343 /* NSObject+CleanDescription.m */; };
 		1BF6E1B41C97E84100553A52 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1BF6E1B31C97E84100553A52 /* podfile */; };
@@ -43,6 +51,20 @@
 /* Begin PBXFileReference section */
 		00DD018F92F26AB2830437D5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		03AD1996896805BDD91E1EE6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B71DC401CA2814D00DD683C /* SmsCodeEnterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmsCodeEnterViewController.h; sourceTree = "<group>"; };
+		1B71DC411CA2814D00DD683C /* SmsCodeEnterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmsCodeEnterViewController.m; sourceTree = "<group>"; };
+		1B71DC431CA2904A00DD683C /* PublicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicView.h; sourceTree = "<group>"; };
+		1B71DC441CA2904A00DD683C /* PublicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicView.m; sourceTree = "<group>"; };
+		1B75152C1CA1372000B1470B /* LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
+		1B75152F1CA1373A00B1470B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		1B7515301CA1373A00B1470B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		1B7515311CA1373A00B1470B /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		1B7515321CA1373A00B1470B /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		1B7515331CA1373A00B1470B /* FindPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPasswordViewController.h; sourceTree = "<group>"; };
+		1B7515341CA1373A00B1470B /* FindPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPasswordViewController.m; sourceTree = "<group>"; };
+		1B7515351CA1373A00B1470B /* ProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolViewController.h; sourceTree = "<group>"; };
+		1B7515361CA1373A00B1470B /* ProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolViewController.m; sourceTree = "<group>"; };
+		1B75153B1CA137D600B1470B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1BD919BF1C9A982900B3A343 /* NSObject+AutoDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoDescription.h"; sourceTree = "<group>"; };
 		1BD919C01C9A982900B3A343 /* NSObject+AutoDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoDescription.m"; sourceTree = "<group>"; };
 		1BD919C11C9A982900B3A343 /* NSObject+CleanDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CleanDescription.h"; sourceTree = "<group>"; };
@@ -113,9 +135,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B75152E1CA1372D00B1470B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1B75152F1CA1373A00B1470B /* LoginViewController.h */,
+				1B7515301CA1373A00B1470B /* LoginViewController.m */,
+				1B7515311CA1373A00B1470B /* RegisterViewController.h */,
+				1B7515321CA1373A00B1470B /* RegisterViewController.m */,
+				1B7515331CA1373A00B1470B /* FindPasswordViewController.h */,
+				1B7515341CA1373A00B1470B /* FindPasswordViewController.m */,
+				1B7515351CA1373A00B1470B /* ProtocolViewController.h */,
+				1B7515361CA1373A00B1470B /* ProtocolViewController.m */,
+				1B71DC401CA2814D00DD683C /* SmsCodeEnterViewController.h */,
+				1B71DC411CA2814D00DD683C /* SmsCodeEnterViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		1BF6E1B51C97ED3200553A52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1B75152C1CA1372000B1470B /* LoginRegister.storyboard */,
 				ABD9DF4E1C841D870016D5B6 /* Main.storyboard */,
 			);
 			name = View;
@@ -124,7 +164,6 @@
 		1BF6E1B61C97ED3B00553A52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1BF6E1C01C97F9EE00553A52 /* Mine */,
 				1BF6E1BC1C97EDCD00553A52 /* Conversation */,
 				1BF6E1BB1C97EDC200553A52 /* Alarm */,
 				ABD9DF621C8431B70016D5B6 /* AlarmClockEntity.h */,
@@ -136,6 +175,8 @@
 		1BF6E1B71C97ED4200553A52 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1BF6E1C01C97F9EE00553A52 /* Mine */,
+				1B75152E1CA1372D00B1470B /* Login */,
 				1BF6E1BA1C97ED8700553A52 /* IM */,
 				1BF6E1B91C97ED7F00553A52 /* Alarm */,
 			);
@@ -226,6 +267,8 @@
 		AB836E851C859031003159E7 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				1B71DC431CA2904A00DD683C /* PublicView.h */,
+				1B71DC441CA2904A00DD683C /* PublicView.m */,
 				1BD919BF1C9A982900B3A343 /* NSObject+AutoDescription.h */,
 				1BD919C01C9A982900B3A343 /* NSObject+AutoDescription.m */,
 				1BD919C11C9A982900B3A343 /* NSObject+CleanDescription.h */,
@@ -296,6 +339,7 @@
 		ABD9DF451C841D870016D5B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1B75153B1CA137D600B1470B /* Images.xcassets */,
 				AB9EDED61C8DAC2F00A132CB /* ring */,
 				ABD9DF531C841D870016D5B6 /* LaunchScreen.storyboard */,
 				ABD9DF561C841D870016D5B6 /* Info.plist */,
@@ -366,11 +410,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B75153C1CA137D600B1470B /* Images.xcassets in Resources */,
 				AB9EDEDC1C8DAC8700A132CB /* ring2.wav in Resources */,
 				AB9EDEDD1C8DAC8700A132CB /* ring3.wav in Resources */,
 				ABD9DF551C841D870016D5B6 /* LaunchScreen.storyboard in Resources */,
 				1BF6E1B41C97E84100553A52 /* podfile in Resources */,
 				AB9EDEDE1C8DAC8700A132CB /* ring4.wav in Resources */,
+				1B75152D1CA1372000B1470B /* LoginRegister.storyboard in Resources */,
 				ABD9DF501C841D870016D5B6 /* Main.storyboard in Resources */,
 				AB9EDEDB1C8DAC8700A132CB /* ring1.wav in Resources */,
 			);
@@ -439,12 +485,17 @@
 				1BF6E1C61C97FA3B00553A52 /* UserInfoViewController.m in Sources */,
 				3878F8F21C9026A50057AD9B /* AlarmNotificationManager.m in Sources */,
 				ABD9DF6A1C844E8B0016D5B6 /* AlarmClockEditViewController.m in Sources */,
+				1B7515371CA1373A00B1470B /* LoginViewController.m in Sources */,
+				1B75153A1CA1373A00B1470B /* ProtocolViewController.m in Sources */,
+				1B71DC421CA2814D00DD683C /* SmsCodeEnterViewController.m in Sources */,
 				ABD9DF641C8431B70016D5B6 /* AlarmClockEntity.m in Sources */,
 				ABD9DF671C8449EA0016D5B6 /* AlarmClockManager.m in Sources */,
 				AB836E961C859057003159E7 /* UICustomSwitch.m in Sources */,
 				1BD919C31C9A982900B3A343 /* NSObject+AutoDescription.m in Sources */,
 				1BF6E1BF1C97EE8500553A52 /* ConversationListViewController.m in Sources */,
 				AB9EDEE41C8DAD8F00A132CB /* RingSelectViewController.m in Sources */,
+				1B7515381CA1373A00B1470B /* RegisterViewController.m in Sources */,
+				1B7515391CA1373A00B1470B /* FindPasswordViewController.m in Sources */,
 				ABD9DF611C8428960016D5B6 /* AlarmClockViewControllerCell.m in Sources */,
 				AB836E971C859057003159E7 /* UINavigationBar+BackgroundColor.m in Sources */,
 				1BD919C41C9A982900B3A343 /* NSObject+CleanDescription.m in Sources */,
@@ -453,6 +504,7 @@
 				ABD9DF471C841D870016D5B6 /* main.m in Sources */,
 				AB9EDEE71C8DB74B00A132CB /* FileUtil.m in Sources */,
 				AB836E9D1C859344003159E7 /* RepeatSelectViewController.m in Sources */,
+				1B71DC451CA2904A00DD683C /* PublicView.m in Sources */,
 				ABD9DF5E1C8422E10016D5B6 /* AlarmClockListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

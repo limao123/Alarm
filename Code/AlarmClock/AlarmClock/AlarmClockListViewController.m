@@ -33,11 +33,13 @@ static NSString * AlarmClockIdentifier = @"AlarmClockCell";
         [self.tableView setEditing:YES animated:YES];
         sender.title = @"完成";
     }
+    [self changeCellDisplay];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.allowsSelectionDuringEditing = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -77,7 +79,11 @@ static NSString * AlarmClockIdentifier = @"AlarmClockCell";
     return YES;
 }
 
+
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //
         [AlarmNotificationManager removeAlarm:self.clocks[indexPath.row]];
@@ -85,20 +91,43 @@ static NSString * AlarmClockIdentifier = @"AlarmClockCell";
         self.clocks = [AlarmClockManager shareAlarmClockManager].alarmClocks;
         [self.tableView reloadData];
     }
+    
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"newAlarmClock"]) {
+        AlarmClockEditViewController *alarmClockEditVC = [segue destinationViewController];
+        alarmClockEditVC.isNew = YES;
+    }
 }
 
 
- #pragma mark - Navigation
- 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
-     if ([segue.identifier isEqualToString:@"newAlarmClock"]) {
-         AlarmClockEditViewController *alarmClockEditVC = [segue destinationViewController];
-         alarmClockEditVC.isNew = YES;
-     }
- }
+- (void)changeCellDisplay{
+    if (self.tableView.isEditing == YES) {
+        for (int i = 0; i < self.clocks.count; i++) {
+            AlarmClockViewControllerCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            [UIView animateWithDuration:0.5 animations:^{
+                cell.openSwitch.alpha = 0;
 
+            }];
+        }
+    } else {
+        for (int i = 0; i < self.clocks.count; i++) {
+            AlarmClockViewControllerCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            [UIView animateWithDuration:0.5 delay:0.1 options:UIViewAnimationOptionTransitionNone animations:^{
+                cell.openSwitch.alpha = 1;
+            } completion:nil];
+        }
+    }
+}
 
 @end
